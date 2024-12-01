@@ -1,0 +1,21 @@
+﻿@namespace DevToys.Blazor.Components.UIElements
+
+@using DevToys.Api;
+@using System.Collections.ObjectModel;
+@using Microsoft.FluentUI.AspNetCore.Components
+@inherits StyledComponentBase
+
+
+<CascadingValue Name="ParentIsEnabled" Value="@IsActuallyEnabled">
+
+    <FluentDataGrid Items="@Rows" ShowHover="@SelectFromEntireRow" TGridItem="T">
+        <SelectColumn TGridItem="T"
+                      SelectMode="@Mode"
+                      SelectFromEntireRow="@SelectFromEntireRow"
+                      Selectable="@(e => !SelectableBefore2000 || e.BirthDate.Year >= 2000)"
+                      @bind-SelectedItems="@SelectedItems" />
+        <PropertyColumn Width="100px" Property="@(p => p.PersonId)" Title="ID" />
+        <PropertyColumn Width="300px" Property="@(p => p.Name)" />
+        <PropertyColumn Width="150px" Property="@(p => p.BirthDate)" Format="yyyy-MM-dd" Sortable="true" />
+    </FluentDataGrid>
+</CascadingValue>

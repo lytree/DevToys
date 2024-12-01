@@ -1,5 +1,6 @@
 @namespace DevToys.Blazor.Components.UIElements
 @using DevToys.Api;
+@using DevToys.Api.Tool.GUI.Fluentui
 @inherits ComponentBase
 
 @if (UIElement is not null)
@@ -101,7 +102,9 @@
         case IUIDataGrid dataGrid:
             <UIDataGridPresenter UIDataGrid="@dataGrid" />
             break;
-
+        case IFluentDataGrid fluentDataGrid:
+            <UIFluentDataGrid UIDataGrid="@dataGrid" />
+            break;
         case IUIImageViewer imageViewer:
             <UIImageViewerPresenter UIImageViewer="@imageViewer" />
             break;

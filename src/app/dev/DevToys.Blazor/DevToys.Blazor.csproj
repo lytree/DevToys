@@ -7,7 +7,7 @@
     <TypeScriptTarget>ES6</TypeScriptTarget>
 
     <!-- Only needed on Mac? -->
-    <PrepareForBuildDependsOn>CompileTypeScript;GetTypeScriptOutputForPublishing;$(PrepareForBuildDependsOn)</PrepareForBuildDependsOn>
+    <!--<PrepareForBuildDependsOn>CompileTypeScript;GetTypeScriptOutputForPublishing;$(PrepareForBuildDependsOn)</PrepareForBuildDependsOn>-->
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +16,7 @@
     <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -125,10 +126,7 @@
     <CSSFiles Include="**\*.g.css" />
     <JSFiles Include="**\*.g.js" />
   </ItemGroup>
-  <Target Name="GulpPrecompileTarget"
-          AfterTargets="CompileTypeScriptWithTSConfig"
-          Inputs="@(SCSSFiles);@(TSFiles)"
-          Outputs="@(CSSFiles);@(JSFiles)">
+  <Target Name="GulpPrecompileTarget" AfterTargets="CompileTypeScriptWithTSConfig" Inputs="@(SCSSFiles);@(TSFiles)" Outputs="@(CSSFiles);@(JSFiles)">
     <Message Importance="high" Text="Generating CSS and JavaScript..." />
     <Exec WorkingDirectory="$(ProjectDir)" Command="node_modules\.bin\gulp devtoysJavaScript" />
     <Exec WorkingDirectory="$(ProjectDir)" Command="node_modules\.bin\gulp devtoysSass" />

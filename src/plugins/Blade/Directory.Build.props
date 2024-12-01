@@ -1,0 +1,15 @@
+<Project>
+
+  <PropertyGroup>
+      <!-- Define .NET and C# configuration -->
+     <LangVersion>latest</LangVersion>
+     <ImplicitUsings>enable</ImplicitUsings>
+     <Nullable>enable</Nullable>
+     <!--<GenerateAssemblyInfo>false</GenerateAssemblyInfo>-->
+
+	  <!-- https://github.com/dotnet/project-system/blob/main/docs/build-acceleration.md -->
+	  <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+
+	  <NetCore>net8.0</NetCore>
+  </PropertyGroup>
+</Project>
